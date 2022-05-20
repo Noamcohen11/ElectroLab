@@ -1,0 +1,9 @@
+part 1
+------
+
+Rx = 22.5 Ohm	
+Ry = 22.2 Ohm	
+V = 1.988 V	
+
+resistor 1: 1-100 Ohm
+resistor 2: 100 + 1-100 Ohm
