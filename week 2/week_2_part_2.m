@@ -44,13 +44,18 @@ for i = 1:size(results_addr,1)
         y(1:plato_x_values(j)-plato_x_values(j-1)) = [];
     end
     
+    min_x_values = find(y == min(y));
+    zero_x_values = find((y == 0) & (x > x(min_x_values(1))));
+    lifetime(i) = (x(zero_x_values(1)) - x(1))/(2*exp(1));
+
     if PlotEveryResistor
         figure
+        hold on
         plot(x,y,'.')
+        plot(x(zero_x_values(1)), y(zero_x_values(1)), '.', 'color', 'r')
+        hold off
     end
 
-    zero_x_values = find(y == 0);
-    lifetime(i) = (x(zero_x_values(1)) - x(1))/(2*exp(1));
 end
 
 resistors = cell2mat(results_addr(:,2))';

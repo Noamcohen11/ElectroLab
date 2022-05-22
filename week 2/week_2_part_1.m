@@ -31,7 +31,7 @@ for i = 1:size(results_addr,1)
 
     %% use correct zero
     min_x = find(y == min(y));
-    if length(min_x) < 5
+    if length(min_x) < 15
         x(min_x) = [];
         y(min_x) = [];
     end 
@@ -49,13 +49,16 @@ for i = 1:size(results_addr,1)
         y(1:plato_x_values(j)-plato_x_values(j-1)) = [];
     end
     
-    if PlotEveryResistor
-        figure
-        plot(x,y,'.')
-    end
-
     zero_x_values = find(y == 0);
     lifetime(i) = (x(zero_x_values(1)) - x(1))/(2*exp(1));
+    if PlotEveryResistor
+        figure
+        hold on
+        plot(x,y,'.')
+        plot(x(zero_x_values(1)), y(zero_x_values(1)), '.', 'color', 'r')
+        hold off
+    end
+
 end
 
 resistors = cell2mat(results_addr(:,2))';
@@ -64,9 +67,10 @@ resistors = cell2mat(results_addr(:,2))';
 figure
 hold on
 plot(resistors, lifetime, '.')
+plot(resistors', resistors'./10000000, '--r')
 hold off
 grid
 box on
 xlabel('R(Ohm)')
 ylabel('T(S)')
-legend('Original Data',  'Fitted Curve')
+legend('Original Data',  'Expected Curve')
