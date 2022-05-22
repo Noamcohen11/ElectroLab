@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   Noam Cohen 20/04/2022   %
-%   Lab - experiment 2      %
+%   Noam Cohen 21/05/2022   %
+%   Lab - experiment 3      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Convert to amper:
 CurrentUnits = 0.001;
@@ -12,11 +12,11 @@ VoltmeterErrorDigit = 0.01;
 
 
 resistor_tests = {
-    'csv_files/resistor_1.csv'
-    'csv_files/resistor_2.csv'
+    'week 1/csv_files/resistor_1.csv'
+    'week 1/csv_files/resistor_2.csv'
 };
 
-full_test_path = 'csv_files/resistor_full.csv';
+full_test_path = 'week 1/csv_files/resistor_full.csv';
 
 for i = 1:length(resistor_tests)
 
@@ -34,7 +34,6 @@ x_error = x.*VoltmeterErrorPrs/100 + VoltmeterErrorDigit;
 %% Plot 
 resistor_fit = fit(x,y,'poly1');
 figure
-% plot(x,y, '.')
 hold on
 errorbar(x , y, y_error, y_error, x_error, x_error,'LineStyle','none', 'LineWidth', 2)
 plot(resistor_fit, '--r')
