@@ -3,7 +3,13 @@
 %   Lab - experiment 2      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Convert to amper:
-current_units = 0.001;
+CurrentUnits = 0.001;
+%Error units:
+AmpmeterErrorPrs = 0.5;
+AmpmeterErrorDigit = 0.0001;
+VoltmeterErrorPrs = 0.6;
+VoltmeterErrorDigit = 0.01;
+
 
 resistor_tests = {
     'csv_files/resistor_1.csv'
@@ -20,15 +26,17 @@ end
 
 writetable(cat(1,results{:}),full_test_path);
 full_results = readtable(string(full_test_path));
-y = full_results{:,2}.*current_units;
+y = full_results{:,2}.*CurrentUnits;
 x = full_results{:,1};
-resistor_fit = fit(x,y,'poly1');
+y_error = y.*AmpmeterErrorPrs/100 + AmpmeterErrorDigit;
+x_error = x.*VoltmeterErrorPrs/100 + VoltmeterErrorDigit;
 
 %% Plot 
-
+resistor_fit = fit(x,y,'poly1');
 figure
-plot(x,y, '.')
+% plot(x,y, '.')
 hold on
+errorbar(x , y, y_error, y_error, x_error, x_error,'LineStyle','none', 'LineWidth', 2)
 plot(resistor_fit, '--r')
 hold off
 grid
