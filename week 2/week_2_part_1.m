@@ -79,20 +79,25 @@ for i = 1:size(results_addr,1)
     
     end
 end
+%% Plot resistor vs control time
 
+%resistors are defined in results_addr.
 resistors = cell2mat(results_addr(:,2))';
 resistor_error = resistors.*PotentialErrorPrs/100 + PotentialErrorDigit;
-% Plot 
+
 figure
 hold on
 errorbar(resistors , control_time, control_time_error, control_time_error, resistor_error , resistor_error ,'LineStyle','none', 'LineWidth', 2)
-plot([0 resistors 12000]', [0 resistors 12000]'./10000000, '--r')
+capacitor_fit = fit(resistors',control_time','poly1');
+plot(0,0)
+plot(capacitor_fit, '--');
+ylim([0 max(control_time) + 0.0002])
 hold off 
 grid
 box on
 xlabel('R(Ohm)')
 ylabel('T(S)')
-legend('Original Data',  'Expected Curve', 'location', 'northwest')
+legend('Original Data',  'Fit', 'location', 'northwest')
 f = gcf;
 exportgraphics(f,[image_save_path 'resistor_vs_control_time' '.png'],'Resolution',300);
 
