@@ -6,18 +6,18 @@
 %Error units:
 PotentialErrorPrs = 0.6;
 PotentialErrorDigit = 0.01;
-PlotEveryResistor = 0;
+PlotEveryResistor = 1;
 image_save_path = 'G:\My Drive\מעבדה א\מעגלים\graphs\';
 
 results_addr = {
-    'csv_files/part_1/1232 ohm.csv', 1232;
-    'csv_files/part_1/2446 ohm.csv', 2446;
-     'csv_files/part_1/3142 ohm.csv', 3142;
-    'csv_files/part_1/4720 ohm.csv', 4720;
-    'csv_files/part_1/6120 ohm.csv', 6120;
-    %'csv_files/part_1/7020 ohm.csv', 7020;
-    'csv_files/part_1/8180 ohm.csv', 8180;
-    'csv_files/part_1/10830 ohm.csv', 10830;
+    'week 2/csv_files/Q1/1232 ohm.csv', 1232;
+    'week 2/csv_files/Q1/2446 ohm.csv', 2446;
+    'week 2/csv_files/Q1/3142 ohm.csv', 3142;
+    'week 2/csv_files/Q1/4720 ohm.csv', 4720;
+    'week 2/csv_files/Q1/6120 ohm.csv', 6120;
+    %'week 2/csv_files/Q1/7020 ohm.csv', 7020;
+    'week 2/csv_files/Q1/8180 ohm.csv', 8180;
+    'week 2/csv_files/Q1/10830 ohm.csv', 10830;
 };
 
 control_time = zeros(1,size(results_addr,1));
@@ -72,7 +72,7 @@ for i = 1:size(results_addr,1)
         plot(volt_fit)
         grid
         box on
-        legend('Original Data',  'Fit')    
+        legend('Original Data',  'Fit')
         hold off
         f = gcf;
         exportgraphics(f,[image_save_path 'volt_vs_time_R_' char(string(results_addr(i,2))) '.png'],'Resolution',300);

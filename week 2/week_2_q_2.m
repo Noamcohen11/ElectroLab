@@ -9,16 +9,16 @@ PotentialErrorDigit = 0.01;
 PlotEveryResistor = 1;
 
 results_addr = {
-    'csv_files/part_2/2  - 2438 ohm.csv', 2438;
-    'csv_files/part_2/2 - 582 ohm.csv', 582;
-    'csv_files/part_2/2 - 3342 ohm.csv', 3342;
-    'csv_files/part_2/2 - 4220 ohm.csv', 4220;
-    'csv_files/part_2/2 - 5060 ohm.csv', 5060;
-    'csv_files/part_2/2 - 6430 ohm.csv', 6430;
-    'csv_files/part_2/2 - 7220 ohm.csv', 7220;
-    'csv_files/part_2/2 - 8480 ohm .csv', 8480;
-    'csv_files/part_2/2 - 9400 ohm.csv', 9400;
-    'csv_files/part_2/2 - 10800 ohm.csv', 10800;
+    'csv_files/Q2/2  - 2438 ohm.csv', 2438;
+    'csv_files/Q2/2 - 582 ohm.csv', 582;
+    'csv_files/Q2/2 - 3342 ohm.csv', 3342;
+    'csv_files/Q2/2 - 4220 ohm.csv', 4220;
+    'csv_files/Q2/2 - 5060 ohm.csv', 5060;
+    'csv_files/Q2/2 - 6430 ohm.csv', 6430;
+    'csv_files/Q2/2 - 7220 ohm.csv', 7220;
+    'csv_files/Q2/2 - 8480 ohm .csv', 8480;
+    'csv_files/Q2/2 - 9400 ohm.csv', 9400;
+    'csv_files/Q2/2 - 10800 ohm.csv', 10800;
 };
 
 lifetime = zeros(1,size(results_addr,1));
