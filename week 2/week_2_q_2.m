@@ -54,6 +54,8 @@ for i = 1:size(results_addr,1)
         plot(x,y,'.')
         plot(x(zero_x_values(1)), y(zero_x_values(1)), '.', 'color', 'r')
         hold off
+        xlabel('T(S)')
+        ylabel('V(V)')
     end
 
 end

@@ -54,10 +54,9 @@ box on
 xlabel('I(A)')
 ylabel('Vdiff(V)')
 legend('Original Data',  'Fitted Curve')
-ylim([0 max(v) + 0.2])
 hold off
 f = gcf;
-exportgraphics(f,[image_save_path 'ressitor_vs_volt.png'],'Resolution',300);
+exportgraphics(f,[image_save_path 'vdiff_vs_current.png'],'Resolution',300);
 
 
 function f = VoltageFit(x, y)

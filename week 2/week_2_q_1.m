@@ -70,13 +70,14 @@ for i = 1:size(results_addr,1)
         hold on
         plot(x,y,'.')
         plot(volt_fit)
+        xlabel('T(S)')
+        ylabel('V(V)')
         grid
         box on
         legend('Original Data',  'Fit')
         hold off
         f = gcf;
         exportgraphics(f,[image_save_path 'volt_vs_time_R_' char(string(results_addr(i,2))) '.png'],'Resolution',300);
-    
     end
 end
 %% Plot resistor vs control time
