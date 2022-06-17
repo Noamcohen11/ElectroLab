@@ -10,13 +10,13 @@ PlotEveryResistor = 1;
 image_save_path = 'G:\My Drive\מעבדה א\מעגלים\graphs\';
 
 results_addr = {
-    'week 2/csv_files/Q1/1232 ohm.csv', 1232;
-    'week 2/csv_files/Q1/2446 ohm.csv', 2446;
-    'week 2/csv_files/Q1/3142 ohm.csv', 3142;
-    'week 2/csv_files/Q1/4720 ohm.csv', 4720;
-    'week 2/csv_files/Q1/6120 ohm.csv', 6120;
+    %'week 2/csv_files/Q1/1232 ohm.csv', 1232;
+    %'week 2/csv_files/Q1/2446 ohm.csv', 2446;
+    %'week 2/csv_files/Q1/3142 ohm.csv', 3142;
+    %'week 2/csv_files/Q1/4720 ohm.csv', 4720;
+    %'week 2/csv_files/Q1/6120 ohm.csv', 6120;
     %'week 2/csv_files/Q1/7020 ohm.csv', 7020;
-    'week 2/csv_files/Q1/8180 ohm.csv', 8180;
+    %'week 2/csv_files/Q1/8180 ohm.csv', 8180;
     'week 2/csv_files/Q1/10830 ohm.csv', 10830;
 };
 
@@ -100,7 +100,7 @@ xlabel('R(Ohm)')
 ylabel('T(S)')
 legend('Original Data',  'Fit', 'location', 'northwest')
 f = gcf;
-exportgraphics(f,[image_save_path 'resistor_vs_control_time' '.png'],'Resolution',300);
+%exportgraphics(f,[image_save_path 'resistor_vs_control_time' '.png'],'Resolution',300);
 
 function f = ExponentFit(x, y)
     coefficients = {'a', 'b'};

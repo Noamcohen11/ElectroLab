@@ -6,19 +6,19 @@
 %Error units:
 PotentialErrorPrs = 0.6;
 PotentialErrorDigit = 0.01;
-PlotEveryResistor = 1;
+PlotEveryResistor =1;
 
 results_addr = {
-    'csv_files/Q2/2  - 2438 ohm.csv', 2438;
-    'csv_files/Q2/2 - 582 ohm.csv', 582;
-    'csv_files/Q2/2 - 3342 ohm.csv', 3342;
-    'csv_files/Q2/2 - 4220 ohm.csv', 4220;
-    'csv_files/Q2/2 - 5060 ohm.csv', 5060;
-    'csv_files/Q2/2 - 6430 ohm.csv', 6430;
-    'csv_files/Q2/2 - 7220 ohm.csv', 7220;
-    'csv_files/Q2/2 - 8480 ohm .csv', 8480;
-    'csv_files/Q2/2 - 9400 ohm.csv', 9400;
-    'csv_files/Q2/2 - 10800 ohm.csv', 10800;
+    %'csv_files/Q2/2  - 2438 ohm.csv', 2438;
+    %'csv_files/Q2/2 - 582 ohm.csv', 582;
+     'csv_files/Q2/2 - 3342 ohm.csv', 3342;
+    % 'csv_files/Q2/2 - 4220 ohm.csv', 4220;
+    % 'csv_files/Q2/2 - 5060 ohm.csv', 5060;
+    % 'csv_files/Q2/2 - 6430 ohm.csv', 6430;
+    % 'csv_files/Q2/2 - 7220 ohm.csv', 7220;
+    % 'csv_files/Q2/2 - 8480 ohm .csv', 8480;
+    % 'csv_files/Q2/2 - 9400 ohm.csv', 9400;
+    % 'csv_files/Q2/2 - 10800 ohm.csv', 10800;
 };
 
 lifetime = zeros(1,size(results_addr,1));
@@ -43,10 +43,13 @@ for i = 1:size(results_addr,1)
         x(1:plato_x_values(j)-plato_x_values(j-1)) = [];
         y(1:plato_x_values(j)-plato_x_values(j-1)) = [];
     end
-    
+    x = x - x(1);
+
+    %% Remove data after min.
     min_x_values = find(y == min(y));
-    zero_x_values = find((y == 0) & (x > x(min_x_values(1))));
-    lifetime(i) = (x(zero_x_values(1)) - x(1))/(2*exp(1));
+    x(min_x_values(1):length(x)) = [];
+    y(min_x_values(1):length(y)) = [];
+    % lifetime(i) = (x(zero_x_values(1)) - x(1))/(2*exp(1));
 
     if PlotEveryResistor
         figure

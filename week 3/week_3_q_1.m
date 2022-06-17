@@ -41,8 +41,11 @@ for i = 1:length(tests)
     %% Remove initial plato
     init_value = y(1);
     if (i == 2)
-    	init_value = y(13);
+    	init_value = y(17);
 	end
+    if (i == 3)
+        init_value = y(2);
+    end
     plato_x_values = [1; find(y == init_value)];
     for j = 2:length(plato_x_values)
         x(1:plato_x_values(j)-plato_x_values(j-1)) = [];
@@ -51,12 +54,12 @@ for i = 1:length(tests)
     x = x - x(1);
 
     % Remove data after the capictor discharges.
-    x_of_min_y = find(y == min(y));
-    zero_x_values = find(y == 0);
-    valid_values = find(zero_x_values > x_of_min_y(1));
+    % x_of_min_y = find(y == min(y));
+    % zero_x_values = find(y == 0);
+    % valid_values = find(zero_x_values > x_of_min_y(1));
 
-    x(zero_x_values(valid_values(1) + 2):length(x)) = [];
-    y(zero_x_values(valid_values(1) + 2):length(y)) = [];
+    % x(zero_x_values(valid_values(1) + 2):length(x)) = [];
+    % y(zero_x_values(valid_values(1) + 2):length(y)) = [];
 
     %Fit and plot
     if (i == 1)
@@ -93,9 +96,11 @@ for i = 1:length(tests)
 		plot(x,y,'.')
         crit_fit = CriticalDampFit(x,y);
 	    plot(crit_fit);
+        xlabel('volt[V]')
+        ylabel('Time[S]')
 	    legend('original_data','criticaly_damped_fit');
 	    f = gcf;
-	    % exportgraphics(f,[image_save_path 'week_3_criticaly_damped.png'],'Resolution',300);
+	    exportgraphics(f,[image_save_path 'week_3_criticaly_damped.png'],'Resolution',300);
     end
 end
 
