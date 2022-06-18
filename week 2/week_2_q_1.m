@@ -17,7 +17,7 @@ results_addr = {
     %'week 2/csv_files/Q1/6120 ohm.csv', 6120;
     %'week 2/csv_files/Q1/7020 ohm.csv', 7020;
     %'week 2/csv_files/Q1/8180 ohm.csv', 8180;
-    'week 2/csv_files/Q1/10830 ohm.csv', 10830;
+    %'week 2/csv_files/Q1/10830 ohm.csv', 10830;
 };
 
 control_time = zeros(1,size(results_addr,1));
@@ -61,7 +61,7 @@ for i = 1:size(results_addr,1)
     volt_fit = ExponentFit(x,y);
     fit_values = coeffvalues(volt_fit);
     control_time(i) = 1/fit_values(2);
-    conf = confint(volt_fit);        
+    conf = confint(volt_fit);
     control_time_error(i) = abs(1/fit_values(2) - 1/conf(2,2));
 
     %% Plot volt vs time
@@ -96,11 +96,11 @@ ylim([0 max(control_time) + 0.0002])
 hold off 
 grid
 box on
-xlabel('R(Ohm)')
-ylabel('T(S)')
+xlabel('R[Ohm]')
+ylabel('T[1/S]')
 legend('Original Data',  'Fit', 'location', 'northwest')
 f = gcf;
-%exportgraphics(f,[image_save_path 'resistor_vs_control_time' '.png'],'Resolution',300);
+exportgraphics(f,[image_save_path 'resistor_vs_control_time' '.png'],'Resolution',300);
 
 function f = ExponentFit(x, y)
     coefficients = {'a', 'b'};

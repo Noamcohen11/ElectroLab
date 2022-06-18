@@ -70,8 +70,6 @@ for i = 1:length(tests)
 		plot(x,y,'.')
         under_fit = UnderDampedFit(x,y);
 	    plot(under_fit);
-        xlabel('Time[S]')
-        ylabel('volt[V]')
 	    legend('original data','underdamped fit');
 	    f = gcf;
 	    exportgraphics(f,[image_save_path 'week_3_underdamp.png'],'Resolution',300);
@@ -85,9 +83,7 @@ for i = 1:length(tests)
 		plot(x,y,'.')
         over_fit = OverDampedFit(x,y);
 	    plot(over_fit);
-        xlabel('Time[S]')
-        ylabel('volt[V]')
-        legend('original data','overdamped fit');
+	    legend('original data','overdamped fit');
 	    f = gcf;
 	    exportgraphics(f,[image_save_path 'week_3_overdamp.png'],'Resolution',300);
     end
@@ -100,8 +96,8 @@ for i = 1:length(tests)
 		plot(x,y,'.')
         crit_fit = CriticalDampFit(x,y);
 	    plot(crit_fit);
-        xlabel('Time[S]')
-        ylabel('volt[V]')
+        xlabel('volt[V]')
+        ylabel('Time[S]')
 	    legend('original data','criticaly damped fit');
 	    f = gcf;
 	    exportgraphics(f,[image_save_path 'week_3_criticaly_damped.png'],'Resolution',300);
@@ -121,7 +117,7 @@ end
 function f = OverDampedFit(x, y)
     %% Get fit parametes:
     
-    fit_params = [0.7952 44000 0.4898 440000];
+    fit_params = [0.7952 0.1869 0.4898 120000];
     %% Fit:
     fo = fitoptions('Method','NonlinearLeastSquares', 'StartPoint', fit_params);         % Use the parameters gathered as starting points.
     fitt = fittype('a*exp(-b*x) + c*exp(-d*x)','coefficients', {'a', 'b', 'c', 'd'}, 'options', fo);
